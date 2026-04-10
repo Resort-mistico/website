@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+/* Hero background image */
+.bg-hero-img {
+  background-image: url("/bg.png");
+}
+
+/* Metallic gradient from logo */
+.text-metallic-gradient {
+  background: linear-gradient(135deg, #F2D47B 0%, #C4A06A 50%, #8B6B2E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Quill editor styles */
+.ql-toolbar.ql-snow {
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  border-radius: 8px 8px 0 0;
+}
+.ql-container.ql-snow {
+  border-radius: 0 0 8px 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+.ql-editor {
+  min-height: 300px;
+}
+
+/* Blog article content */
+.blog-article-content {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #2c2922;
+}
+.blog-article-content h1,
+.blog-article-content h2,
+.blog-article-content h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #010408;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.blog-article-content p {
+  margin-bottom: 1.25rem;
+}
+.blog-article-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+.blog-article-content ul,
+.blog-article-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.blog-article-content blockquote {
+  border-left: 3px solid #c4a06a;
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: #5a5549;
+}
+.blog-article-content a {
+  color: #c4a06a;
+  text-decoration: underline;
+}
