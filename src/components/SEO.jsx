@@ -1,19 +1,26 @@
 import { Helmet } from 'react-helmet-async'
 
 export default function SEO({ title, description, url, image, article, datePublished, authorName }) {
-  const siteTitle = 'Seu Escritório | Advocacia e Consultoria'
+  const siteTitle = 'Advogado em Governador Valadares | Luís Felipe Advocacia'
   const siteUrl = 'https://seudominio.com.br' // Troque depois para o domínio final
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle
-  const metaDescription = description || 'Acompanhe nossos artigos e últimas notícias da área jurídica.'
+  const metaDescription = description || 'Procurando Advogado em Governador Valadares? Oferecemos assessoria jurídica especializada e atuação em Leilões Judiciais de Imóveis.'
   const currUrl = url ? `${siteUrl}${url}` : siteUrl
 
   // Structured Data (JSON-LD)
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
-      '@type': 'WebSite',
+      '@type': 'LegalService',
       url: siteUrl,
-      name: siteTitle,
+      name: 'Luís Felipe Advocacia',
+      description: metaDescription,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Governador Valadares',
+        addressRegion: 'MG',
+        addressCountry: 'BR'
+      }
     },
   ]
 
