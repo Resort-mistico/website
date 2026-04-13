@@ -168,7 +168,7 @@ function Hero() {
   }, [])
 
   return (
-    <section id="hero" ref={ref} className="relative mt-20 min-h-[calc(100vh-80px)] lg:mt-0 lg:min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
+    <section id="hero" ref={ref} className="relative min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
       <div className="absolute inset-0 bg-hero-img bg-cover bg-center" />
       <div className="absolute inset-0 bg-black/10" />
       <div className="relative z-10 w-full pb-10 lg:pb-0">
@@ -180,7 +180,7 @@ function Hero() {
             <p className="hero-el text-white/60 text-[10px] lg:text-sm tracking-widest uppercase mb-6 font-medium">
               Advocacia e Assessoria Jur&iacute;dica &bull; OAB/MG
             </p>
-            <h1 className="hero-el font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] mb-6 text-white">
+            <h1 className="hero-el font-heading text-3xl sm:text-5xl md:text-6xl font-bold leading-[1.1] mb-6 text-white">
               Servi&ccedil;os Jur&iacute;dicos e<br />
               Assessoria em <span className="text-metallic-gradient">Leil&otilde;es</span>
             </h1>
