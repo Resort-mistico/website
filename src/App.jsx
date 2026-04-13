@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import BlogCard from './components/BlogCard'
 import { PrivateRoute } from './components/PrivateRoute'
+import SEO from './components/SEO'
 
 const BlogList = React.lazy(() => import('./pages/BlogList'))
 const BlogArticle = React.lazy(() => import('./pages/BlogArticle'))
@@ -73,14 +74,14 @@ function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           {isHomePage ? (
             <a href="#hero" className="flex items-center gap-3">
-              <img src="/logob.png" alt="LFC" className="h-8 w-auto" />
+              <img src="/logob.webp" alt="LFC" width="32" height="32" className="h-8 w-auto" />
               <span className="font-heading text-lg font-bold text-white">
                 Lu&iacute;s Felipe Advocacia
               </span>
             </a>
           ) : (
             <Link to="/" className="flex items-center gap-3">
-              <img src="/logob.png" alt="LFC" className="h-8 w-auto" />
+              <img src="/logob.webp" alt="LFC" width="32" height="32" className="h-8 w-auto" />
               <span className="font-heading text-lg font-bold text-white">
                 Lu&iacute;s Felipe Advocacia
               </span>
@@ -191,7 +192,7 @@ function Hero() {
             <div className="hero-el flex flex-col sm:flex-row items-start gap-4">
               <a
                 href="https://wa.me/5533998302939?text=Olá, Dr. Luís Felipe. Gostaria de solicitar contato."
-                target="_blank" rel="noopener"
+                target="_blank" rel="noopener noreferrer"
                 className="group bg-transparent text-white font-semibold px-8 py-4 rounded border border-white/20 hover:border-metallic transition-all flex items-center gap-2 text-base"
               >
                 Entre em contato
@@ -231,9 +232,13 @@ function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center max-w-5xl mx-auto">
           <div className="about-item max-w-sm mx-auto md:mx-0">
             <div className="w-full aspect-[3/4] relative rounded-lg overflow-hidden shadow-2xl border border-metallic/20 group">
-              <img 
-                src="/luis5.png" 
-                alt="Dr. Luís Felipe" 
+              <img
+                src="/luis5.webp"
+                alt="Dr. Luís Felipe, advogado em Governador Valadares"
+                width="384"
+                height="512"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
@@ -507,7 +512,7 @@ function Auctions() {
             </p>
             <a
               href="https://wa.me/5533998302939?text=Olá, Dr. Luís Felipe. Tenho interesse em assessoria para leilões judiciais."
-              target="_blank" rel="noopener"
+              target="_blank" rel="noopener noreferrer"
               className="leilao-el inline-flex items-center gap-2 bg-metallic text-white font-semibold px-8 py-4 rounded-lg hover:bg-metallic-dark transition-all hover:scale-105 shadow-lg shadow-metallic/20 text-base"
             >
               Quero assessoria em leil&otilde;es <ArrowRight size={18} />
@@ -614,11 +619,11 @@ function BlogPreview() {
    ======================================== */
 function Testimonials() {
   const reviews = [
-    { id: 1, image: "/review1.png" },
-    { id: 2, image: "/review2.png" },
-    { id: 3, image: "/review3.png" },
-    { id: 4, image: "/review4.png" },
-    { id: 5, image: "/review5.png" }
+    { id: 1, image: "/review1.webp" },
+    { id: 2, image: "/review2.webp" },
+    { id: 3, image: "/review3.webp" },
+    { id: 4, image: "/review4.webp" },
+    { id: 5, image: "/review5.webp" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -661,7 +666,7 @@ function Testimonials() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-3">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" className="w-5 h-5" />
+             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" className="w-5 h-5" />
              <p className="text-metallic text-xs font-bold tracking-widest uppercase">Avaliações no Google</p>
           </div>
           <h2 className="font-heading text-2xl md:text-4xl text-dark font-bold">
@@ -691,9 +696,13 @@ function Testimonials() {
                       style={{ width: `${100 / itemsPerView}%` }}
                     >
                        <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 overflow-hidden h-full flex pt-2">
-                         <img 
-                           src={review.image} 
-                           alt={`Depoimento ${review.id}`} 
+                         <img
+                           src={review.image}
+                           alt={`Avaliação Google ${review.id}`}
+                           width="400"
+                           height="200"
+                           loading="lazy"
+                           decoding="async"
                            className="w-full object-contain scale-[1.02]"
                            onError={(e) => {
                              e.target.style.display = 'none';
@@ -856,7 +865,7 @@ function ContactCTA() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-metallic uppercase tracking-wider">Telefone/WhatsApp</span>
-                  <a href="https://wa.me/5533998302939" target="_blank" rel="noopener" className="text-lg font-semibold text-dark hover:text-metallic transition-colors">(33) 9 9830-2939</a>
+                  <a href="https://wa.me/5533998302939" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-dark hover:text-metallic transition-colors">(33) 9 9830-2939</a>
                 </div>
               </div>
               
@@ -884,7 +893,7 @@ function ContactCTA() {
             <div className="cta-el pt-2">
               <a
                 href="https://wa.me/5533998302939?text=Olá, Dr. Luís Felipe. Gostaria de entrar em contato."
-                target="_blank" rel="noopener"
+                target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-metallic text-white font-bold px-10 py-5 rounded-lg hover:bg-metallic-dark shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto text-center text-base md:text-lg uppercase tracking-wide"
               >
                 ENTRE EM CONTATO <ArrowRight size={20} className="inline" />
@@ -912,9 +921,9 @@ function ContactCTA() {
                 <p className="text-sm text-dark font-medium leading-tight">Rua São Paulo, 176 - Centro</p>
               </div>
               <a 
-                href="https://maps.app.goo.gl/uP9f6j9Z5T9Z5T9Z5" 
-                target="_blank" 
-                rel="noopener"
+                href="https://maps.app.goo.gl/uP9f6j9Z5T9Z5T9Z5"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs bg-dark text-white px-4 py-2 rounded-lg font-bold hover:bg-metallic transition-colors"
               >
                 Como Chegar
@@ -938,7 +947,7 @@ function Footer() {
           {/* Logo e Descrição */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logob.png" alt="Luís Felipe Advocacia" className="h-10 w-auto opacity-90" />
+              <img src="/logob.webp" alt="Luís Felipe Advocacia" width="40" height="40" loading="lazy" decoding="async" className="h-10 w-auto opacity-90" />
               <span className="font-heading text-xl md:text-2xl font-bold text-white">
                 Lu&iacute;s Felipe Advocacia
               </span>
@@ -979,7 +988,7 @@ function WhatsAppFloat() {
   return (
     <a
       href="https://wa.me/5533998302939?text=Olá, Dr. Luís Felipe. Gostaria de uma orientação jurídica."
-      target="_blank" rel="noopener"
+      target="_blank" rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25d366] rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:scale-110 transition-all duration-300"
       aria-label="WhatsApp"
     >
@@ -996,6 +1005,7 @@ function WhatsAppFloat() {
 function LandingPage() {
   return (
     <div className="bg-white">
+      <SEO />
       <Hero />
       <About />
       <DiffCards />

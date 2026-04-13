@@ -1,46 +1,64 @@
 import { Helmet } from 'react-helmet-async'
 
+const SITE_URL = 'https://luisfelipeadvocacia.com.br'
+const SITE_TITLE = 'Advogado em Governador Valadares | Luís Felipe Advocacia'
+const DEFAULT_DESCRIPTION = 'Procurando Advogado em Governador Valadares? Oferecemos assessoria jurídica especializada e atuação em Leilões Judiciais de Imóveis.'
+
 export default function SEO({ title, description, url, image, article, datePublished, authorName }) {
-  const siteTitle = 'Advogado em Governador Valadares | Luís Felipe Advocacia'
-  const siteUrl = 'https://seudominio.com.br' // Troque depois para o domínio final
-  const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle
-  const metaDescription = description || 'Procurando Advogado em Governador Valadares? Oferecemos assessoria jurídica especializada e atuação em Leilões Judiciais de Imóveis.'
-  const currUrl = url ? `${siteUrl}${url}` : siteUrl
+  const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
+  const metaDescription = description || DEFAULT_DESCRIPTION
+  const currUrl = url ? `${SITE_URL}${url}` : SITE_URL
+  const ogImage = image || `${SITE_URL}/logob.webp`
 
   // Structured Data (JSON-LD)
   const schemaOrgJSONLD = [
     {
-      '@context': 'http://schema.org',
+      '@context': 'https://schema.org',
       '@type': 'LegalService',
-      url: siteUrl,
+      url: SITE_URL,
       name: 'Luís Felipe Advocacia',
-      description: metaDescription,
+      description: DEFAULT_DESCRIPTION,
+      telephone: '+55-33-99830-2939',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Rua São Paulo, 176 - Centro',
         addressLocality: 'Governador Valadares',
         addressRegion: 'MG',
-        addressCountry: 'BR'
-      }
+        postalCode: '35010-200',
+        addressCountry: 'BR',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -18.8647,
+        longitude: -41.9453,
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+      sameAs: [],
     },
   ]
 
   if (article) {
     schemaOrgJSONLD.push({
-      '@context': 'http://schema.org',
+      '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       image: image ? [image] : [],
       datePublished: datePublished || '',
       author: {
         '@type': 'Person',
-        name: authorName || 'Equipe Editorial',
+        name: authorName || 'Luís Felipe',
       },
       publisher: {
         '@type': 'Organization',
-        name: siteTitle,
+        name: SITE_TITLE,
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}/logo.png`,
+          url: `${SITE_URL}/logob.webp`,
         },
       },
       description: metaDescription,
@@ -58,13 +76,15 @@ export default function SEO({ title, description, url, image, article, datePubli
       <meta property="og:url" content={currUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={metaDescription} />
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:locale" content="pt_BR" />
+      <meta property="og:site_name" content="Luís Felipe Advocacia" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      {image && <meta name="twitter:image" content={image} />}
+      <meta name="twitter:image" content={ogImage} />
 
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}

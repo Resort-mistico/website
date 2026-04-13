@@ -5,6 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    target: 'esnext',
+    cssMinify: true,
+    assetsInlineLimit: 4096, // inline assets < 4kb como base64
+    reportCompressedSize: false, // build mais rápido
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -23,7 +27,11 @@ export default defineConfig({
             }
             return 'vendor'
           }
-        }
+        },
+        // Garante nomes de asset com hash para cache busting correto
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       }
     },
     chunkSizeWarningLimit: 1000

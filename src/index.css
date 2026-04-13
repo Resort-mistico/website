@@ -13,9 +13,19 @@ body {
   margin: 0;
 }
 
-/* Hero background image */
+/* Hero background image — pré-carregada via <link rel="preload"> no index.html */
 .bg-hero-img {
-  background-image: url("/bg.png");
+  background-image: url("/bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform; /* evita repaint desnecessário */
+}
+
+/* Otimização de pintura para seções abaixo do fold */
+section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }
 
 /* Metallic gradient from logo */
