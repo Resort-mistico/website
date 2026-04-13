@@ -177,7 +177,7 @@ function Hero() {
         </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl">
-            <p className="hero-el text-white/60 text-sm tracking-widest uppercase mb-6 font-medium">
+            <p className="hero-el text-white/60 text-[10px] lg:text-sm tracking-widest uppercase mb-6 font-medium">
               Advocacia e Assessoria Jur&iacute;dica &bull; OAB/MG
             </p>
             <h1 className="hero-el font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] mb-6 text-white">
