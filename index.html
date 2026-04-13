@@ -22,7 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Preload de recursos críticos (LCP) -->
-    <link rel="preload" as="image" href="/bg.webp" fetchpriority="high" type="image/webp" />
+    <link rel="preload" as="image" href="/bgmobile.webp" fetchpriority="high" type="image/webp" media="(max-width: 1023px)" />
+    <link rel="preload" as="image" href="/bg.webp" fetchpriority="high" type="image/webp" media="(min-width: 1024px)" />
     <link rel="preload" as="image" href="/logob.webp" type="image/webp" />
 
     <!-- Google Fonts — apenas Inter e Playfair Display (JetBrains Mono não é usada na UI) -->

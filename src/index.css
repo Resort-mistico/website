@@ -13,13 +13,19 @@ body {
   margin: 0;
 }
 
-/* Hero background image — pré-carregada via <link rel="preload"> no index.html */
+/* Hero background image — mobile usa bgmobile.webp, desktop usa bg.webp */
 .bg-hero-img {
-  background-image: url("/bg.webp");
+  background-image: url("/bgmobile.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  will-change: transform; /* evita repaint desnecessário */
+  will-change: transform;
+}
+
+@media (min-width: 1024px) {
+  .bg-hero-img {
+    background-image: url("/bg.webp");
+  }
 }
 
 /* Otimização de pintura para seções abaixo do fold */
