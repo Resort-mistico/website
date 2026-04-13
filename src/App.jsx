@@ -170,10 +170,10 @@ function Hero() {
   }, [])
 
   return (
-    <section id="hero" ref={ref} className="relative min-h-screen flex items-center bg-primary overflow-hidden">
+    <section id="hero" ref={ref} className="relative min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
       <div className="absolute inset-0 bg-hero-img bg-cover bg-center" />
       <div className="absolute inset-0 bg-black/10" />
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full pb-16 lg:pb-0">
         <div className="w-full flex justify-center lg:justify-start" style={{ paddingLeft: 'max(24px, calc(50% - 650px))' }}>
           <div className="h-1 w-20 bg-metallic-gradient rounded" />
         </div>
