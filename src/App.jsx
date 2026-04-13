@@ -170,47 +170,41 @@ function Hero() {
   }, [])
 
   return (
-    <section id="hero" ref={ref} className="relative min-h-screen flex flex-col lg:flex-row bg-primary overflow-hidden">
-
-      {/* ── IMAGEM — topo no mobile, lado esquerdo no desktop ── */}
-      <div className="relative w-full h-64 sm:h-80 lg:h-auto lg:w-1/2 lg:min-h-screen flex-shrink-0">
-        <div className="absolute inset-0 bg-hero-img bg-cover bg-center lg:bg-left" />
-        {/* Gradiente mobile: funde a imagem com o fundo escuro abaixo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-primary lg:hidden" />
-        {/* Gradiente desktop: funde a imagem com o fundo escuro à direita */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-primary" />
-      </div>
-
-      {/* ── TEXTO — abaixo da imagem no mobile, lado direito no desktop ── */}
-      <div className="relative z-10 flex-1 flex items-center">
-        <div className="w-full px-6 py-14 lg:py-0 lg:pl-12 lg:pr-16 max-w-xl mx-auto lg:mx-0">
-          <div className="h-1 w-16 bg-metallic-gradient rounded mb-8" />
-          <p className="hero-el text-white/60 text-sm tracking-widest uppercase mb-6 font-medium">
-            Advocacia e Assessoria Jur&iacute;dica &bull; OAB/MG
-          </p>
-          <h1 className="hero-el font-heading text-4xl sm:text-5xl font-bold leading-[1.1] mb-6 text-white">
-            Servi&ccedil;os Jur&iacute;dicos e<br />
-            Assessoria em <span className="text-metallic-gradient">Leil&otilde;es</span>
-          </h1>
-          <p className="hero-el text-white/60 text-base mb-10 leading-relaxed">
-            Atua&ccedil;&atilde;o em diversas &aacute;reas do Direito com experi&ecirc;ncia em leil&otilde;es judiciais de im&oacute;veis em todo o Brasil.
-          </p>
-          <div className="hero-el">
-            <a
-              href="https://wa.me/5533998302939?text=Olá, Dr. Luís Felipe. Gostaria de solicitar contato."
-              target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-transparent text-white font-semibold px-8 py-4 rounded border border-white/20 hover:border-metallic transition-all text-base"
-            >
-              Entre em contato
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </a>
+    <section id="hero" ref={ref} className="relative min-h-screen flex items-center bg-primary overflow-hidden">
+      <div className="absolute inset-0 bg-hero-img bg-cover bg-center" />
+      <div className="absolute inset-0 bg-black/10" />
+      <div className="relative z-10 w-full">
+        <div className="w-full flex justify-center lg:justify-start" style={{ paddingLeft: 'max(24px, calc(50% - 650px))' }}>
+          <div className="h-1 w-20 bg-metallic-gradient rounded" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-2xl">
+            <p className="hero-el text-white/60 text-sm tracking-widest uppercase mb-6 font-medium">
+              Advocacia e Assessoria Jur&iacute;dica &bull; OAB/MG
+            </p>
+            <h1 className="hero-el font-heading text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] mb-6 text-white">
+              Servi&ccedil;os Jur&iacute;dicos e<br />
+              Assessoria em <span className="text-metallic-gradient">Leil&otilde;es</span>
+            </h1>
+            <p className="hero-el text-white/60 text-base max-w-xl mb-10 leading-relaxed">
+              Atua&ccedil;&atilde;o em diversas &aacute;reas do Direito com experi&ecirc;ncia em leil&otilde;es judiciais de im&oacute;veis em todo o Brasil.
+            </p>
+            <div className="hero-el flex flex-col sm:flex-row items-start gap-4">
+              <a
+                href="https://wa.me/5533998302939?text=Olá, Dr. Luís Felipe. Gostaria de solicitar contato."
+                target="_blank" rel="noopener noreferrer"
+                className="group bg-transparent text-white font-semibold px-8 py-4 rounded border border-white/20 hover:border-metallic transition-all flex items-center gap-2 text-base"
+              >
+                Entre em contato
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+            <p className="hero-el text-white/40 text-sm mt-8 tracking-wide">
+              OAB/MG [inserir n&uacute;mero] | 10 anos de atua&ccedil;&atilde;o
+            </p>
           </div>
-          <p className="hero-el text-white/40 text-sm mt-8 tracking-wide">
-            OAB/MG [inserir n&uacute;mero] | 10 anos de atua&ccedil;&atilde;o
-          </p>
         </div>
       </div>
-
     </section>
   )
 }
