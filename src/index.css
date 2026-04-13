@@ -17,7 +17,7 @@ body {
 .bg-hero-img {
   background-image: url("/bgmobile.webp");
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 60%;
   background-repeat: no-repeat;
   will-change: transform;
 }
