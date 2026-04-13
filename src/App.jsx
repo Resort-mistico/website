@@ -66,7 +66,7 @@ function Navbar() {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled || isBlogRoute
             ? 'bg-[#01060b]/95 backdrop-blur-sm shadow-lg'
-            : 'bg-[#01060b] lg:bg-transparent'
+            : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
@@ -171,7 +171,7 @@ function Hero() {
     <section id="hero" ref={ref} className="relative min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
       <div className="absolute inset-0 bg-hero-img bg-cover bg-center" />
       <div className="absolute inset-0 bg-black/10" />
-      <div className="relative z-10 w-full pb-10 lg:pb-0">
+      <div className="relative z-10 w-full pt-20 pb-10 lg:pt-0 lg:pb-0">
         <div className="w-full flex justify-center lg:justify-start" style={{ paddingLeft: 'max(24px, calc(50% - 650px))' }}>
           <div className="h-1 w-20 bg-metallic-gradient rounded" />
         </div>
