@@ -170,7 +170,7 @@ function Hero() {
   }, [])
 
   return (
-    <section id="hero" ref={ref} className="relative min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
+    <section id="hero" ref={ref} className="relative mt-20 min-h-[calc(100vh-80px)] lg:mt-0 lg:min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
       <div className="absolute inset-0 bg-hero-img bg-cover bg-center" />
       <div className="absolute inset-0 bg-black/10" />
       <div className="relative z-10 w-full pb-10 lg:pb-0">
