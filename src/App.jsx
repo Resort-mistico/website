@@ -64,11 +64,9 @@ function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
+          scrolled || isBlogRoute
             ? 'bg-[#01060b]/95 backdrop-blur-sm shadow-lg'
-            : isBlogRoute
-              ? 'bg-[#01060b]/95 backdrop-blur-sm shadow-lg'
-              : 'bg-transparent'
+            : 'bg-[#01060b] lg:bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
