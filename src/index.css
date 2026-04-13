@@ -16,7 +16,7 @@ body {
 /* Hero background image — mobile usa bgmobile.webp, desktop usa bg.webp */
 .bg-hero-img {
   background-image: url("/bgmobile.webp");
-  background-size: cover;
+  background-size: 140%;
   background-position: center 60%;
   background-repeat: no-repeat;
   will-change: transform;
@@ -25,6 +25,7 @@ body {
 @media (min-width: 1024px) {
   .bg-hero-img {
     background-image: url("/bg.webp");
+    background-size: cover;
     background-position: center;
   }
 }
