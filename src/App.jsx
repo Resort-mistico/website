@@ -173,12 +173,13 @@ function Hero() {
     <section id="hero" ref={ref} className="relative min-h-screen flex items-center bg-primary overflow-hidden">
       <div className="absolute inset-0 bg-hero-img bg-cover bg-center" />
       <div className="absolute inset-0 bg-black/10" />
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full pt-24 pb-12 lg:pt-0 lg:pb-0">
         <div className="w-full flex justify-center lg:justify-start" style={{ paddingLeft: 'max(24px, calc(50% - 650px))' }}>
           <div className="h-1 w-20 bg-metallic-gradient rounded" />
         </div>
-        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          <div className="flex-1">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+          {/* Texto */}
+          <div className="flex-1 order-2 lg:order-1">
             <p className="hero-el text-white/60 text-sm tracking-widest uppercase mb-6 font-medium text-left">
               Advocacia e Assessoria Jur&iacute;dica &bull; OAB/MG
             </p>
@@ -202,6 +203,24 @@ function Hero() {
             <p className="hero-el text-white/40 text-sm mt-8 tracking-wide">
               OAB/MG [inserir n&uacute;mero] | 10 anos de atua&ccedil;&atilde;o
             </p>
+          </div>
+
+          {/* Foto do advogado */}
+          <div className="hero-el order-1 lg:order-2 flex-shrink-0 flex justify-center">
+            <div className="relative w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-[28rem]">
+              {/* Borda decorativa dourada */}
+              <div className="absolute inset-0 rounded-full lg:rounded-lg border border-metallic/30" />
+              <img
+                src="/luis5.webp"
+                alt="Dr. Luís Felipe, advogado em Governador Valadares"
+                width="320"
+                height="448"
+                fetchpriority="high"
+                className="w-full h-full object-cover object-top rounded-full lg:rounded-lg shadow-2xl"
+              />
+              {/* Gradiente inferior para fundir com o fundo no desktop */}
+              <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-primary/60 to-transparent rounded-lg" />
+            </div>
           </div>
         </div>
       </div>
