@@ -174,7 +174,7 @@ function Hero() {
 
       {/* ── IMAGEM — topo no mobile, lado esquerdo no desktop ── */}
       <div className="relative w-full h-64 sm:h-80 lg:h-auto lg:w-1/2 lg:min-h-screen flex-shrink-0">
-        <div className="absolute inset-0 bg-hero-img bg-cover bg-left" />
+        <div className="absolute inset-0 bg-hero-img bg-cover bg-center lg:bg-left" />
         {/* Gradiente mobile: funde a imagem com o fundo escuro abaixo */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-primary lg:hidden" />
         {/* Gradiente desktop: funde a imagem com o fundo escuro à direita */}
