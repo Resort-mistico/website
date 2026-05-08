@@ -198,7 +198,7 @@ function Hero() {
               </a>
             </div>
             <p className="hero-el text-white/40 text-sm mt-8 tracking-wide">
-              OAB/MG [inserir n&uacute;mero] | 10 anos de atua&ccedil;&atilde;o
+              OAB/MG | 10 anos de atua&ccedil;&atilde;o
             </p>
           </div>
         </div>
@@ -518,7 +518,7 @@ function Auctions() {
           </div>
           <div className="space-y-5">
             {[
-              { val: 'OAB/MG', label: '[inserir número]' },
+              { val: 'OAB/MG', label: '' },
               { val: '10+', label: 'Anos de experiência' },
               { val: 'Brasil', label: 'Atuação em todo o território' }
             ].map((stat, idx) => (
@@ -968,7 +968,7 @@ function Footer() {
         {/* Informações Finais e Direitos */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-center md:text-left">
           <p className="text-white/80 font-medium tracking-wide">
-            OAB/MG [inserir número] | Atua&ccedil;&atilde;o em todo o Brasil
+            OAB/MG | Atua&ccedil;&atilde;o em todo o Brasil
           </p>
           <p className="text-white/40">
             &copy; {new Date().getFullYear()} Lu&iacute;s Felipe Advocacia. Todos os direitos reservados.
