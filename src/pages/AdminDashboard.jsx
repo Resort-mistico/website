@@ -19,6 +19,7 @@ function AdminDashboard() {
   const [status, setStatus] = useState('draft')
   const [coverFile, setCoverFile] = useState(null)
   const [coverPreview, setCoverPreview] = useState('')
+  const [coverStoredUrl, setCoverStoredUrl] = useState('') // URL real salva no banco (não blob)
   const [saving, setSaving] = useState(false)
   const titleRef = useRef(null)
 
@@ -103,23 +104,38 @@ function AdminDashboard() {
     setStatus('draft')
     setCoverFile(null)
     setCoverPreview('')
+    setCoverStoredUrl('')
   }
 
   const handleSave = async () => {
     if (!title.trim() || !content.trim()) return
     setSaving(true)
     try {
-      let coverUrl = coverPreview
+      // Começa com a URL real já salva no banco (nunca usa blob URL)
+      let coverUrl = coverStoredUrl
       if (coverFile) {
+        // Sanitiza o nome do arquivo removendo caracteres especiais, acentos e espaços
+        const safeName = coverFile.name
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-zA-Z0-9._-]/g, '-')
+          .toLowerCase()
+        const filePath = `covers/${Date.now()}-${safeName}`
         const { data, error } = await supabase.storage
           .from('covers')
-          .upload(`covers/${Date.now()}-${coverFile.name}`, coverFile)
-        if (!error) {
-          const { data: urlData } = supabase.storage
-            .from('covers')
-            .getPublicUrl(data.path)
-          coverUrl = urlData.publicUrl
+          .upload(filePath, coverFile, { upsert: false })
+        if (error) {
+          // eslint-disable-next-line no-console
+          console.error('[Storage] Erro ao fazer upload da capa:', error)
+          alert('Erro ao fazer upload da imagem: ' + error.message)
+          setSaving(false)
+          return // Aborta para não salvar URL inválida no banco
         }
+        const { data: urlData } = supabase.storage
+          .from('covers')
+          .getPublicUrl(data.path)
+        coverUrl = urlData.publicUrl
+        setCoverStoredUrl(coverUrl)
       }
 
       const postData = {
@@ -163,6 +179,7 @@ function AdminDashboard() {
     setStatus(post.status || 'draft')
     setCoverFile(null)
     setCoverPreview(post.cover_image || '')
+    setCoverStoredUrl(post.cover_image || '') // URL real do banco
     titleRef.current?.focus()
   }
 

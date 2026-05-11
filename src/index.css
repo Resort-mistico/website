@@ -94,11 +94,14 @@ section:not(#hero) {
 }
 .blog-article-content p {
   margin-bottom: 1.25rem;
+  text-align: justify;
 }
 .blog-article-content img {
   max-width: 100%;
   border-radius: 8px;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
+  display: block;
+  height: auto;
 }
 .blog-article-content ul,
 .blog-article-content ol {

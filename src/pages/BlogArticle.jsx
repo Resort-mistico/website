@@ -107,7 +107,12 @@ function BlogArticle() {
       {/* Article */}
       <article className="container mx-auto px-6 py-12 max-w-3xl">
         {post.cover_image && (
-          <img src={post.cover_image} alt={post.title} className="w-full rounded-xl mb-8" />
+          <img
+            src={post.cover_image}
+            alt={post.title}
+            className="w-full rounded-xl mb-8"
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
         )}
 
         {post.category && (

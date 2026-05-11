@@ -38,12 +38,22 @@ function BlogCard({ post }) {
       >
         <Link to={`/blog/${post.slug}`} className="block h-full group">
           {post.cover_image ? (
-            <img src={post.cover_image} alt={post.title} className="w-full h-48 object-cover" />
-          ) : (
-            <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">Imagem do artigo</span>
-            </div>
-          )}
+            <img
+              src={post.cover_image}
+              alt={post.title}
+              className="w-full h-48 object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none'
+                e.currentTarget.nextSibling.style.display = 'flex'
+              }}
+            />
+          ) : null}
+          <div
+            className="w-full h-48 bg-gray-100 flex items-center justify-center"
+            style={{ display: post.cover_image ? 'none' : 'flex' }}
+          >
+            <span className="text-gray-400 text-sm">Imagem do artigo</span>
+          </div>
         <div className="p-6">
           {post.category && (
             <span className="text-xs font-semibold text-metallic uppercase tracking-wider">
