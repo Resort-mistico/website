@@ -94,7 +94,6 @@ section:not(#hero) {
 }
 .blog-article-content p {
   margin-bottom: 1.25rem;
-  text-align: justify;
 }
 .blog-article-content img {
   max-width: 100%;
@@ -118,4 +117,11 @@ section:not(#hero) {
 .blog-article-content a {
   color: #c4a06a;
   text-decoration: underline;
+}
+
+/* Suporte para alinhamento vindo do editor */
+.blog-article-content [style*="text-align"] p,
+.blog-article-content p[style*="text-align"],
+.blog-article-content div[style*="text-align"] {
+  text-align: inherit;
 }
