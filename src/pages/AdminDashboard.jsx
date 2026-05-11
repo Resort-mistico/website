@@ -1,8 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import { LogOut, Plus, Edit2, Trash2, Eye, Check, X } from 'lucide-react'
-import Editor from 'react-simple-wysiwyg'
+import { LogOut, Plus, Edit2, Trash2, Eye, Check, X, AlignLeft, AlignCenter, AlignRight, AlignJustify } from 'lucide-react'
+import Editor, {
+  BtnBold, BtnItalic, BtnUnderline, BtnStrikeThrough,
+  BtnNumberedList, BtnBulletList, BtnLink, BtnClearFormatting,
+  BtnUndo, BtnRedo,
+  HtmlButton, Separator, BtnStyles, Toolbar, EditorProvider,
+  createButton,
+} from 'react-simple-wysiwyg'
+
+// Botões de alinhamento criados fora do componente (não recriam a cada render)
+const BtnAlignLeft    = createButton('Alinhar à esquerda', <AlignLeft size={14} />,    'justifyLeft')
+const BtnAlignCenter  = createButton('Centralizar',         <AlignCenter size={14} />,  'justifyCenter')
+const BtnAlignRight   = createButton('Alinhar à direita',   <AlignRight size={14} />,   'justifyRight')
+const BtnAlignJustify = createButton('Justificar',           <AlignJustify size={14} />, 'justifyFull')
 
 function AdminDashboard() {
   const navigate = useNavigate()
@@ -322,11 +334,37 @@ function AdminDashboard() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-dark mb-1">Conte&uacute;do</label>
-                <Editor
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  containerProps={{ style: { minHeight: '350px', backgroundColor: 'white', borderRadius: '0.5rem', borderColor: '#e5e7eb' } }}
-                />
+                <EditorProvider>
+                  <Editor
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    containerProps={{ style: { minHeight: '350px', backgroundColor: 'white', borderRadius: '0.5rem', borderColor: '#e5e7eb' } }}
+                  >
+                    <Toolbar>
+                      <BtnUndo />
+                      <BtnRedo />
+                      <Separator />
+                      <BtnBold />
+                      <BtnItalic />
+                      <BtnUnderline />
+                      <BtnStrikeThrough />
+                      <Separator />
+                      <BtnAlignLeft />
+                      <BtnAlignCenter />
+                      <BtnAlignRight />
+                      <BtnAlignJustify />
+                      <Separator />
+                      <BtnNumberedList />
+                      <BtnBulletList />
+                      <Separator />
+                      <BtnLink />
+                      <BtnClearFormatting />
+                      <HtmlButton />
+                      <Separator />
+                      <BtnStyles />
+                    </Toolbar>
+                  </Editor>
+                </EditorProvider>
               </div>
               <div>
                 <label className="block text-sm font-medium text-dark mb-1">Resumo SEO (Google)</label>
