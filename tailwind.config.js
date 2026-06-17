@@ -7,19 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#010408',
-        'primary-light': '#020b15',
-        'primary-dark': '#000000',
-        metallic: '#C4A06A',
-        'metallic-light': '#F2D47B',
-        'metallic-dark': '#8B6B2E',
-        dark: '#1A1A1A',
-        'footer-dark': '#010408',
-        'deep-black': '#01050a',
-        'deep-black-light': '#020b15',
+        primary: '#1d3f1c',
+        'primary-light': '#2a5429',
+        'primary-dark': '#152d14',
+        metallic: '#C49A1A',
+        'metallic-light': '#E8C840',
+        'metallic-dark': '#A67D15',
+        dark: '#111111',
+        'green-tint': '#F2F7F2',
+        'footer-dark': '#1B3D1B',
+        'deep-black': '#1B3D1B',
+        'deep-black-light': '#2D6A2D',
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['Comfortaa', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         heading: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       borderRadius: {

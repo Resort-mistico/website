@@ -1,42 +1,46 @@
 import { Helmet } from 'react-helmet-async'
 
-const SITE_URL = 'https://luisfelipeadvocacia.com.br'
-const SITE_TITLE = 'Advogado em Governador Valadares | Luís Felipe Advocacia'
-const DEFAULT_DESCRIPTION = 'Procurando Advogado em Governador Valadares? Oferecemos assessoria jurídica especializada e atuação em Leilões Judiciais de Imóveis.'
+const SITE_URL = 'https://hotelclubresortmistico.com.br'
+const SITE_TITLE = 'Hotel Club Resort Místico | Coroaci/MG — Natureza, Conforto e Tranquilidade'
+const DEFAULT_DESCRIPTION = 'Localizado em Coroaci/MG, o Hotel Club Resort Místico é um refúgio cercado pela beleza natural de Minas Gerais. Suítes para casais, famílias e grupos, piscina, churrasqueira, café da manhã incluso e lazer para todas as idades. Reserve pelo WhatsApp!'
 
 export default function SEO({ title, description, url, image, article, datePublished, authorName }) {
-  const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
+  const fullTitle = title ? `${title} | Hotel Club Resort Místico` : SITE_TITLE
   const metaDescription = description || DEFAULT_DESCRIPTION
   const currUrl = url ? `${SITE_URL}${url}` : SITE_URL
-  const ogImage = image || `${SITE_URL}/logob.webp`
+  const ogImage = image || `${SITE_URL}/logo.png`
 
   // Structured Data (JSON-LD)
   const schemaOrgJSONLD = [
     {
       '@context': 'https://schema.org',
-      '@type': 'LegalService',
+      '@type': 'Hotel',
       url: SITE_URL,
-      name: 'Luís Felipe Advocacia',
+      name: 'Hotel Club Resort Místico',
       description: DEFAULT_DESCRIPTION,
-      telephone: '+55-33-99830-2939',
+      telephone: '+55-31-987954136',
+      email: 'dasilvarailda37@gmail.com',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Rua São Paulo, 176 - Centro',
-        addressLocality: 'Governador Valadares',
+        addressLocality: 'Coroaci',
         addressRegion: 'MG',
-        postalCode: '35010-200',
         addressCountry: 'BR',
       },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: -18.8647,
-        longitude: -41.9453,
-      },
+      amenityFeature: [
+        { '@type': 'LocationFeatureSpecification', name: 'Piscina', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Estacionamento', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Churrasqueira', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Bar', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Café da manhã', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Área de exercícios', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Ducha externa', value: true },
+        { '@type': 'LocationFeatureSpecification', name: 'Sinuca', value: true },
+      ],
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '18:00',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '00:00',
+        closes: '23:59',
       },
       sameAs: [],
     },
@@ -50,15 +54,15 @@ export default function SEO({ title, description, url, image, article, datePubli
       image: image ? [image] : [],
       datePublished: datePublished || '',
       author: {
-        '@type': 'Person',
-        name: authorName || 'Luís Felipe',
+        '@type': 'Organization',
+        name: authorName || 'Hotel Club Resort Místico',
       },
       publisher: {
         '@type': 'Organization',
-        name: SITE_TITLE,
+        name: 'Hotel Club Resort Místico',
         logo: {
           '@type': 'ImageObject',
-          url: `${SITE_URL}/logob.webp`,
+          url: `${SITE_URL}/logo.png`,
         },
       },
       description: metaDescription,
@@ -78,7 +82,7 @@ export default function SEO({ title, description, url, image, article, datePubli
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:locale" content="pt_BR" />
-      <meta property="og:site_name" content="Luís Felipe Advocacia" />
+      <meta property="og:site_name" content="Hotel Club Resort Místico" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

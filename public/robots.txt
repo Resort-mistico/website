@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-Sitemap: https://luisfelipeadvocacia.com.br/sitemap.xml
+Sitemap: https://hotelclubresortmistico.com.br/sitemap.xml

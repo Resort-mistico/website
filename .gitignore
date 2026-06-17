@@ -26,6 +26,22 @@ dist-ssr
 # Claude Code
 .claude/
 
+# Agent / AI tooling configs (não fazem parte do site)
+.agent/
+.opencode/
+
+# Documentos de planejamento internos (OpenSpec)
+openspec/
+
+# Arquivos de trabalho/duplicados na raiz — não usados pelo site
+# (versões otimizadas ficam em public/)
+/*.png
+/*.jpg
+/*.jpeg
+/*.ttf
+/*.pdf
+/screenshot.mjs
+
 # Variáveis de ambiente — nunca commitar
 .env
 .env.*
