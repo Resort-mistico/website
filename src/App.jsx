@@ -499,7 +499,7 @@ function DiffCards() {
                     <div className="w-10 h-10 rounded-lg bg-metallic/10 flex items-center justify-center shrink-0 group-hover:bg-metallic/20 group-hover:scale-110 transition-all duration-300">
                       <Icon size={18} className="text-metallic" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-dark transition-colors min-w-0 break-words">
+                    <span className="text-sm font-medium text-gray-700 group-hover:text-dark transition-colors min-w-0">
                       {item.title}
                     </span>
                   </div>
