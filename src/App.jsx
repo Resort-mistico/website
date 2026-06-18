@@ -950,10 +950,10 @@ function Testimonials() {
 
         <div className="relative max-w-6xl mx-auto px-6 md:px-12">
            {/* Controls */}
-           <button onClick={prevSlide} className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-green-tint z-10 transition-colors">
+           <button onClick={prevSlide} aria-label="Avaliação anterior" className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-green-tint z-10 transition-colors">
               <ChevronLeft size={24} className="text-dark" />
            </button>
-           <button onClick={nextSlide} className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-green-tint z-10 transition-colors">
+           <button onClick={nextSlide} aria-label="Próxima avaliação" className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-green-tint z-10 transition-colors">
               <ChevronRight size={24} className="text-dark" />
            </button>
 
