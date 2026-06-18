@@ -3,8 +3,8 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
-  Shield, Scale, Building2, FileText, Users, Briefcase, Home,
-  CheckCircle2, MapPin, Phone, Mail, ArrowRight, Gavel, Target, Zap, Award,
+  Users,
+  CheckCircle2, MapPin, Phone, Mail, ArrowRight, Target,
   Star, ChevronLeft, ChevronRight, Plus, Minus, ChevronDown,
   Heart, BedSingle, Waves, Coffee, Flame, Wine, Sun, Car
 } from 'lucide-react'
@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger)
 /* ========================================
    LAZY IMAGE WITH SKELETON
    ======================================== */
-function LazyImage({ src, alt, className, style }) {
+function LazyImage({ src, alt, className, style, width, height }) {
   const [loaded, setLoaded] = useState(false)
   return (
     <div className="relative w-full h-full">
@@ -24,6 +24,8 @@ function LazyImage({ src, alt, className, style }) {
       <img
         src={src}
         alt={alt}
+        width={width}
+        height={height}
         className={`${className} transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
         style={style}
         loading="lazy"
@@ -39,15 +41,30 @@ function LazyImage({ src, alt, className, style }) {
    ======================================== */
 function ScrollProgressBar() {
   const [progress, setProgress] = useState(0)
+  const totalRef = useRef(0)
 
   useEffect(() => {
+    const updateTotal = () => {
+      totalRef.current = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    }
+    updateTotal()
+    window.addEventListener('resize', updateTotal, { passive: true })
+
+    let ticking = false
     const onScroll = () => {
-      const { scrollY } = window
-      const total = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      setProgress(total > 0 ? scrollY / total : 0)
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const total = totalRef.current
+        setProgress(total > 0 ? window.scrollY / total : 0)
+        ticking = false
+      })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', updateTotal)
+    }
   }, [])
 
   return (
@@ -67,7 +84,15 @@ function BackToTopButton() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400)
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setVisible(window.scrollY > 400)
+        ticking = false
+      })
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -104,7 +129,15 @@ function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 80)
+        ticking = false
+      })
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -129,11 +162,11 @@ function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           {isHomePage ? (
             <a href="#hero">
-              <img src="/logo.png" alt="Hotel Club Resort Místico" height="48" className="h-12 w-auto" />
+              <img src="/logo.png" alt="Hotel Club Resort Místico" width="420" height="354" className="h-12 w-auto" />
             </a>
           ) : (
             <Link to="/">
-              <img src="/logo.png" alt="Hotel Club Resort Místico" height="48" className="h-12 w-auto" />
+              <img src="/logo.png" alt="Hotel Club Resort Místico" width="420" height="354" className="h-12 w-auto" />
             </Link>
           )}
 
@@ -225,6 +258,7 @@ function Navbar() {
    ======================================== */
 function Hero() {
   const ref = useRef(null)
+  const videoRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -236,18 +270,35 @@ function Hero() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    // iOS Safari só respeita autoplay quando "muted" é setado via JS (atributo HTML não é suficiente)
+    video.muted = true
+    video.defaultMuted = true
+    const playPromise = video.play()
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {})
+    }
+  }, [])
+
   return (
     <section id="hero" ref={ref} className="relative min-h-screen flex items-end lg:items-center bg-primary overflow-hidden">
       <img
         src="/hero.webp"
         alt=""
+        width="1672"
+        height="941"
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
       />
       <video
+        ref={videoRef}
         autoPlay
         muted
         playsInline
+        webkit-playsinline="true"
+        preload="auto"
         onCanPlay={(e) => { e.currentTarget.playbackRate = 1.5 }}
         onEnded={(e) => { e.currentTarget.style.opacity = '0' }}
         className="absolute inset-0 w-full h-full object-cover opacity-[0.85] blur-[2px] transition-opacity duration-1000"
@@ -257,7 +308,7 @@ function Hero() {
       <div className="absolute inset-0 bg-[#050c04]/95" />
       <div className="relative z-10 w-full pt-20 pb-10 lg:pt-0 lg:pb-0">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-          <img src="/logo.png" alt="Hotel Club Resort Místico" className="hero-el h-36 md:h-44 w-auto mb-3 drop-shadow-lg" />
+          <img src="/logo.png" alt="Hotel Club Resort Místico" width="420" height="354" className="hero-el h-36 md:h-44 w-auto mb-3 drop-shadow-lg" />
           <div className="hero-el flex items-center gap-1.5 text-white/60 text-[10px] tracking-widest uppercase mb-6 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
             <MapPin size={10} className="text-metallic-gradient" />
             Coroaci &mdash; Minas Gerais
@@ -321,6 +372,8 @@ function About() {
               <LazyImage
                 src="/img01.webp"
                 alt="Hotel Club Resort Místico"
+                width="1200"
+                height="675"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -329,6 +382,8 @@ function About() {
               <LazyImage
                 src="/img02.webp"
                 alt="Hotel Club Resort Místico - Área de Lazer"
+                width="1200"
+                height="799"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -337,6 +392,8 @@ function About() {
               <LazyImage
                 src="/hero.webp"
                 alt="Hotel Club Resort Místico - Vista"
+                width="1672"
+                height="941"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -462,6 +519,8 @@ function DiffCards() {
               <LazyImage
                 src="/img02.webp"
                 alt="Estrutura do Hotel Club Resort Místico"
+                width="1200"
+                height="799"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -510,6 +569,8 @@ function Services() {
       desc: 'Aconchego e privacidade para quem vem a dois. Ambiente pensado para momentos especiais.',
       msg: 'Olá! Gostaria de informações sobre a Suíte Casal do Hotel Club Resort Místico.',
       image: '/img01.webp',
+      imageWidth: 1200,
+      imageHeight: 675,
     },
     {
       icon: BedSingle,
@@ -517,6 +578,8 @@ function Services() {
       desc: 'Praticidade e conforto para quem viaja sozinho, com toda a estrutura do resort.',
       msg: 'Olá! Gostaria de informações sobre a Suíte Individual do Hotel Club Resort Místico.',
       image: '/img02.webp',
+      imageWidth: 1200,
+      imageHeight: 799,
       badge: 'Mais reservada',
     },
     {
@@ -525,6 +588,8 @@ function Services() {
       desc: 'Espaço generoso para toda a família curtir junta com conforto e liberdade.',
       msg: 'Olá! Gostaria de informações sobre a Suíte Família do Hotel Club Resort Místico.',
       image: '/img03.webp',
+      imageWidth: 1200,
+      imageHeight: 1240,
     },
   ]
 
@@ -552,6 +617,8 @@ function Services() {
                 <LazyImage
                   src={s.image}
                   alt={s.title}
+                  width={s.imageWidth}
+                  height={s.imageHeight}
                   className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Gradient overlay */}
@@ -677,6 +744,8 @@ function LocationSection() {
                 <LazyImage
                   src="/coroaci.webp"
                   alt="Coroaci, Minas Gerais"
+                  width="1600"
+                  height="2262"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -1002,7 +1071,7 @@ function FAQ() {
             return (
               <div
                 key={i}
-                className={`border rounded-xl transition-all duration-300 ${
+                className={`faq-el border rounded-xl transition-all duration-300 ${
                   isOpen ? 'border-metallic shadow-md' : 'border-gray-100 hover:border-gray-200'
                 }`}
               >
