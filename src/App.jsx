@@ -494,12 +494,12 @@ function DiffCards() {
                 return (
                   <div
                     key={i}
-                    className="diff-card group flex items-center gap-3 p-3 rounded-xl bg-white/70 border border-primary/5 hover:border-metallic/30 hover:bg-white hover:shadow-md transition-all duration-300 cursor-default"
+                    className="diff-card group flex items-center gap-3 p-3 rounded-xl bg-white/70 border border-primary/5 hover:border-metallic/30 hover:bg-white hover:shadow-md transition-all duration-300 cursor-default min-w-0"
                   >
                     <div className="w-10 h-10 rounded-lg bg-metallic/10 flex items-center justify-center shrink-0 group-hover:bg-metallic/20 group-hover:scale-110 transition-all duration-300">
                       <Icon size={18} className="text-metallic" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-dark transition-colors">
+                    <span className="text-sm font-medium text-gray-700 group-hover:text-dark transition-colors min-w-0 break-words">
                       {item.title}
                     </span>
                   </div>
