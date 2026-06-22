@@ -19,7 +19,7 @@ export default function SEO({ title, description, url, image, article, datePubli
       name: 'Hotel Club Resort Místico',
       description: DEFAULT_DESCRIPTION,
       telephone: '+55-31-987954136',
-      email: 'dasilvarailda37@gmail.com',
+      email: 'resortmistico@gmail.com',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Coroaci',

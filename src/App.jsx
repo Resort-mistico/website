@@ -1155,7 +1155,7 @@ function ContactCTA() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-metallic-gradient uppercase tracking-wider">E-mail</span>
-                  <a href="mailto:dasilvarailda37@gmail.com" className="text-lg font-semibold text-dark hover:text-metallic transition-colors">dasilvarailda37@gmail.com</a>
+                  <a href="mailto:resortmistico@gmail.com" className="text-lg font-semibold text-dark hover:text-metallic transition-colors">resortmistico@gmail.com</a>
                 </div>
               </div>
 
