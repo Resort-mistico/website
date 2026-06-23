@@ -301,7 +301,7 @@ function Hero() {
         preload="auto"
         onCanPlay={(e) => { e.currentTarget.playbackRate = 1.5 }}
         onEnded={(e) => { e.currentTarget.style.opacity = '0' }}
-        className="absolute inset-0 w-full h-full object-cover opacity-[0.85] blur-[2px] transition-opacity duration-1000"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover opacity-[0.85] blur-[2px] transition-opacity duration-1000"
       >
         <source src="/VID.mp4" type="video/mp4" />
       </video>
